@@ -22,7 +22,7 @@ function play(){
         }
 
         const bombs = generateBoms();
-    console.log(bombs);
+        console.log(bombs);
 
     function generateBoms() {
         const arrayBombs = [];
@@ -75,6 +75,45 @@ function play(){
 
         return cell;
 
+    }
+
+    while( i< bombs.length){
+        i++;
+        arrayBombs[bombs[i]].classList.add("sconfitta");
+        console.log(arrayBombs);
+    }
+
+    function selectBomba(bombs) {
+        const boxArray = document.getElementsByClassName("campo");
+
+        for (let i = 0; i < boxArray.length; i++) {
+        boxArray[i].addEventListener("click", function () {
+
+        if (this.classList.contains("bomba")) {
+
+            this.classList.add("sconfitta");
+                alert("Hai perso! Nabbetto 11111111111!!!!!");
+        generateBoms(bombs);
+
+        console.log(" Mosse =" + mosseAcc);
+        sentinella = true;
+
+        } else {
+
+        if (sentinella) {
+            console.log("Hai preso la bomba");
+        }else{
+            mosseAcc++;
+            this.classList.add("selected");
+        }
+        }
+        });
+        }
+        const bombe = Bombe();
+        if (bombe.length > 0) {
+            insertBomba(bombe);
+            selectBomba(bombe);
+        }
     }
 
 }
